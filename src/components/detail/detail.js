@@ -6,6 +6,9 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Rating from "@material-ui/lab/Rating";
+import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+// import { useParams } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,6 +37,7 @@ export default function ComplexGrid() {
   const [rating, setRating] = useState(3);
   const [coleccion, setColeccion] = useState();
   console.log(coleccion);
+  // const { coleccionId } = useParams();
 
   useEffect(() => {
     const getColeccion = async () => {
@@ -67,25 +71,34 @@ export default function ComplexGrid() {
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
                 <Typography gutterBottom variant="subtitle1">
-                  Titulo
+                  {coleccion.title}
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  Actor: {coleccion.info.actors[0]}
-                  {"  "} Actor:
+                  Actores: {coleccion.info.actors[0]}
+                  {" , "}
                   {coleccion.info.actors[1]}
+                  {"  "}
                   Director: {coleccion.info.directors}
                 </Typography>
-                <Typography variant="body2">Sinopsis</Typography>
+                <Typography variant="body2">{coleccion.info.plot}</Typography>
               </Grid>
               <Grid item>
                 <Typography variant="body2" style={{ cursor: "pointer" }}>
                   VOLVER
                 </Typography>
+                <Typography variant="body2" style={{ cursor: "pointer" }}>
+                  REPRODUCIR
+                </Typography>
+                <BottomNavigationAction
+                  label="Favorites"
+                  value="favorites"
+                  icon={<FavoriteIcon />}
+                />
               </Grid>
             </Grid>
             <Grid item>
               <Typography component="legend">Puntuación</Typography>
-              <Rating name="read-only" value={rating} readOnly />
+              <Rating name="read-only" value={coleccion.info.rating} readOnly />
             </Grid>
           </Grid>
         </Grid>
