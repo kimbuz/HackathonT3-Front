@@ -1,5 +1,4 @@
 import "./detail.css";
-
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -11,6 +10,8 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { useParams } from "react-router-dom";
 import { Spinner } from "../spinner/Spinner";
+import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -89,13 +90,15 @@ export const Detail = () => {
                       {coleccion.info.plot}
                     </Typography>
                   </Grid>
-                  <Grid item>
-                    <Typography variant="body2" style={{ cursor: "pointer" }}>
-                      VOLVER
-                    </Typography>
-                    <Typography variant="body2" style={{ cursor: "pointer" }}>
-                      REPRODUCIR
-                    </Typography>
+                  <Grid item className="button">
+                    <Link to={`/`}>
+                      <Button variant="contained">VOLVER</Button>
+                    </Link>
+                    <Link to={`/reproductor/${coleccion.info.trailer_url}`}>
+                      <Button variant="contained" color="primary">
+                        REPRODUCIR
+                      </Button>
+                    </Link>
                     <BottomNavigationAction
                       label="Favorites"
                       value="favorites"
@@ -121,4 +124,4 @@ export const Detail = () => {
       ;
     </div>
   );
-}
+};
