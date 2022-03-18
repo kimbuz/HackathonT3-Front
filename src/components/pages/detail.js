@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ComplexGrid() {
+export default function Detail() {
   const classes = useStyles();
   const [rating, setRating] = useState(3);
   const [coleccion, setColeccion] = useState();

@@ -1,0 +1,14 @@
+.filter-container {
+	width: 100%;
+	background-color: white;
+	position: sticky;
+	top: 64px;
+}
+
+.filter-seccion {
+	display: flex;
+	justify-content: center;
+}
+.filter-seccion button {
+	border: none;
+}

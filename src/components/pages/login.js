@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import "./login.css";
+
+import React, { useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "../context/userContext";
+
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import Button from "@material-ui/core/Button";
-
-import "./login.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,8 +18,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ComposedTextField() {
-  async function login() {
+export const Login = () => {
+  const {updateUser} = useContext(UserContext);
+
+  async function checkin() {
     const formulario = document.forms["formUser"];
     const validacion = formulario.checkValidity();
     if (validacion === false) {
@@ -35,7 +40,8 @@ export default function ComposedTextField() {
         }
       );
       const data = await rawResponse.json();
-      console.log(data);
+      const {user_email, user_name}= data
+      updateUser([{user_email, user_name}]);
     }
   }
 
@@ -44,7 +50,6 @@ export default function ComposedTextField() {
     password: "",
   });
 
-  const classes = useStyles();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -64,11 +69,11 @@ export default function ComposedTextField() {
         onChange={handleChange}
         name="formUser"
       >
-        <h1>UltraNanoFlow</h1>
+        <h1>Flow Mini</h1>
 
         <FormControl variant="outlined" className="FormControl-login">
           <InputLabel htmlFor="component-outlined" name="email">
-            Usuario
+            Email
           </InputLabel>
           <OutlinedInput
             id="component-outlined"
@@ -87,13 +92,13 @@ export default function ComposedTextField() {
             id="component-outlined"
             name="password"
             label="password"
+            minLength="10"
             type="password"
-            minlength="5"
             required
           />
         </FormControl>
 
-        <Button variant="contained" color="primary" onClick={login}>
+        <Button variant="contained" color="primary" onClick={checkin}>
           Ingresar
         </Button>
 
