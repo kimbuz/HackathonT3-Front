@@ -1,23 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import { useContext } from "react";
+
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { Login } from "./components/pages/login";
+import { Home } from "./components/pages/home";
+import { Detail } from "./components/pages/detail";
+import { Error } from "./components/pages/error";
+
+import { ThemeProvider } from "@material-ui/core/styles";
+import Theme from "./components/themeConfig/themeConfig";
+
+import { UserContext } from "./components/context/userContext";
 
 function App() {
+  const {user} = useContext(UserContext);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ThemeProvider theme={Theme}>
+
+        <Router>
+          {
+            !user ? ( <Login/>):(
+            <Switch>
+            <Route exact path="/">
+              <Home/>
+            </Route>
+                
+            <Route path="/detail/:productId">
+              <Detail/>
+            </Route>
+            
+            <Route path="*">
+              <Error/>
+            </Route> 
+          </Switch> 
+            )
+          }
+        </Router>           
+      </ThemeProvider>
     </div>
   );
 }

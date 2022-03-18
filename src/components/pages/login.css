@@ -1,0 +1,19 @@
+.Container-login {
+  margin: 30px;
+  padding: 30px;
+}
+
+.Form-login {
+  display: flex;
+  flex-direction: column;
+  max-width: 450px;
+  padding: 10%;
+  margin: 0 auto;
+  background-color: azure;
+  gap: 10px;
+}
+
+.FormControl-login {
+  margin: 100px;
+  padding: 30px;
+}
