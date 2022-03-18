@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
 import "./detail.css";
+
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Detail() {
+export const Detail = () => {
   const classes = useStyles();
   const [rating, setRating] = useState(3);
   const [coleccion, setColeccion] = useState();
