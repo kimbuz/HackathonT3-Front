@@ -64,7 +64,7 @@ export default function ComposedTextField() {
         onChange={handleChange}
         name="formUser"
       >
-        <h1>Flow Mini</h1>
+        <h1>UltraNanoFlow</h1>
 
         <FormControl variant="outlined" className="FormControl-login">
           <InputLabel htmlFor="component-outlined" name="email">
