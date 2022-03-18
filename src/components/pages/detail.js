@@ -1,4 +1,4 @@
-import "./detail.css";
+
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -12,6 +12,8 @@ import { useParams } from "react-router-dom";
 import { Spinner } from "../spinner/Spinner";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+
+import "./detail.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {

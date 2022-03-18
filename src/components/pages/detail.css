@@ -1,3 +1,7 @@
 .button {
   gap: 10px;
 }
+
+.MuiButton-containedPrimary {
+  margin-left: 10px !important;
+}

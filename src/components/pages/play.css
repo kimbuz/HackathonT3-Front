@@ -11,3 +11,54 @@
   width: 100%;
   position: absolute;
 }
+
+.playerMenu{
+  position: fixed;
+  top: 50%;
+  left: 10px;
+  z-index: 10000;
+}
+
+.playerName{
+  width: 100vw;
+  height: 100vh;
+}
+
+.playerEngine {
+  border: none;
+}
+
+#buttonboxback {
+  width: 10px;
+  height: 40px;
+  background-color: gray;
+  position: relative;
+  margin-left: 15px;
+  border-radius: 5px;
+}
+
+#buttonboxback:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -17px;
+  border-style: solid;
+  border-width: 20px 20px 20px 0;
+  border-color: transparent gray transparent transparent;
+}
+
+#buttonboxback > a {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+  font: bold 18px/40px Sans-Serif;
+}
+
+#buttonboxback:hover {
+  background-color: lightblue;
+}
+
+#buttonboxback:hover:before {
+  border-right-color: lightblue;
+}
