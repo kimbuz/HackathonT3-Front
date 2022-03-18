@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Login = () => {
-  const {updateUser} = useContext(UserContext);
+  const { updateUser } = useContext(UserContext);
 
   async function checkin() {
     const formulario = document.forms["formUser"];
@@ -40,8 +40,8 @@ export const Login = () => {
         }
       );
       const data = await rawResponse.json();
-      const {user_email, user_name}= data
-      updateUser([{user_email, user_name}]);
+      const { user_email, user_name } = data;
+      updateUser([{ user_email, user_name }]);
     }
   }
 
@@ -49,7 +49,6 @@ export const Login = () => {
     email: "",
     password: "",
   });
-
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -69,9 +68,13 @@ export const Login = () => {
         onChange={handleChange}
         name="formUser"
       >
-        <div className='logoContainer'>
+        <div className="logoContainer">
           <span>UltraNano</span>
-          <img className="logo" src="https://web.flow.com.ar/theme/flow/logo.svg" alt="logo"/>
+          <img
+            className="logo"
+            src="https://web.flow.com.ar/theme/flow/logo.svg"
+            alt="logo"
+          />
         </div>
 
         <FormControl variant="outlined" className="FormControl-login">
@@ -105,8 +108,10 @@ export const Login = () => {
           Ingresar
         </Button>
 
-        <Button variant="contained">Registrarse</Button>
+        <Button variant="contained" disabled>
+          Registrarse
+        </Button>
       </form>
     </div>
   );
-}
+};

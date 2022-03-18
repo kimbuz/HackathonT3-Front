@@ -1,6 +1,7 @@
 import "./App.css";
 import React from "react";
 import { useContext } from "react";
+import { UserContext } from "./components/context/userContext";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -12,8 +13,6 @@ import { Play } from "./components/pages/play";
 
 import { ThemeProvider } from "@material-ui/core/styles";
 import Theme from "./components/themeConfig/themeConfig";
-
-import { UserContext } from "./components/context/userContext";
 
 function App() {
   const { user } = useContext(UserContext);
