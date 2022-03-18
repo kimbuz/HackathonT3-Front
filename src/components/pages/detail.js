@@ -8,7 +8,8 @@ import ButtonBase from "@material-ui/core/ButtonBase";
 import Rating from "@material-ui/lab/Rating";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { Spinner } from "../spinner/Spinner";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,13 +38,14 @@ export default function Detail() {
   const [rating, setRating] = useState(3);
   const [coleccion, setColeccion] = useState();
   console.log(coleccion);
-  // const { coleccionId } = useParams();
+  const { productId } = useParams();
+  console.log(productId);
 
   useEffect(() => {
     const getColeccion = async () => {
       try {
         const response = await fetch(
-          "https://bkultrananoflow.herokuapp.com/api/v1/content/6233c668433606bc69ff138c"
+          `https://bkultrananoflow.herokuapp.com/api/v1/content/${productId}`
         );
         const data = await response.json();
         setColeccion(data);
@@ -55,54 +57,67 @@ export default function Detail() {
   }, []);
 
   return (
-    <div className="{classes.root} Container-login">
-      <Paper className={classes.paper}>
-        <Grid container spacing={2}>
-          <Grid item>
-            <ButtonBase className={classes.image}>
-              <img
-                className={classes.img}
-                alt="Reproducir imagen"
-                src={coleccion.info.image_url}
-              />
-            </ButtonBase>
-          </Grid>
-          <Grid item xs={12} sm container>
-            <Grid item xs container direction="column" spacing={2}>
-              <Grid item xs>
-                <Typography gutterBottom variant="subtitle1">
-                  {coleccion.title}
-                </Typography>
-                <Typography variant="body2" gutterBottom>
-                  Actores: {coleccion.info.actors[0]}
-                  {" , "}
-                  {coleccion.info.actors[1]}
-                  {"  "}
-                  Director: {coleccion.info.directors}
-                </Typography>
-                <Typography variant="body2">{coleccion.info.plot}</Typography>
-              </Grid>
+    <div>
+      {coleccion ? (
+        <div className="{classes.root} Container-login">
+          <Paper className={classes.paper}>
+            <Grid container spacing={2}>
               <Grid item>
-                <Typography variant="body2" style={{ cursor: "pointer" }}>
-                  VOLVER
-                </Typography>
-                <Typography variant="body2" style={{ cursor: "pointer" }}>
-                  REPRODUCIR
-                </Typography>
-                <BottomNavigationAction
-                  label="Favorites"
-                  value="favorites"
-                  icon={<FavoriteIcon />}
-                />
+                <ButtonBase className={classes.image}>
+                  <img
+                    className={classes.img}
+                    alt="Reproducir imagen"
+                    src={coleccion.info.image_url}
+                  />
+                </ButtonBase>
+              </Grid>
+              <Grid item xs={12} sm container>
+                <Grid item xs container direction="column" spacing={2}>
+                  <Grid item xs>
+                    <Typography gutterBottom variant="subtitle1">
+                      {coleccion.title}
+                    </Typography>
+                    <Typography variant="body2" gutterBottom>
+                      Actores: {coleccion.info.actors[0]}
+                      {" , "}
+                      {coleccion.info.actors[1]}
+                      {"  "}
+                      Director: {coleccion.info.directors}
+                    </Typography>
+                    <Typography variant="body2">
+                      {coleccion.info.plot}
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Typography variant="body2" style={{ cursor: "pointer" }}>
+                      VOLVER
+                    </Typography>
+                    <Typography variant="body2" style={{ cursor: "pointer" }}>
+                      REPRODUCIR
+                    </Typography>
+                    <BottomNavigationAction
+                      label="Favorites"
+                      value="favorites"
+                      icon={<FavoriteIcon />}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid item>
+                  <Typography component="legend">Puntuación</Typography>
+                  <Rating
+                    name="read-only"
+                    value={coleccion.info.rating}
+                    readOnly
+                  />
+                </Grid>
               </Grid>
             </Grid>
-            <Grid item>
-              <Typography component="legend">Puntuación</Typography>
-              <Rating name="read-only" value={coleccion.info.rating} readOnly />
-            </Grid>
-          </Grid>
-        </Grid>
-      </Paper>
+          </Paper>
+        </div>
+      ) : (
+        <Spinner />
+      )}
+      ;
     </div>
   );
 }
