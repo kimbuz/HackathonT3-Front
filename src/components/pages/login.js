@@ -69,7 +69,10 @@ export const Login = () => {
         onChange={handleChange}
         name="formUser"
       >
-        <h1>Flow Mini</h1>
+        <div className='logoContainer'>
+          <span>UltraNano</span>
+          <img className="logo" src="https://web.flow.com.ar/theme/flow/logo.svg" alt="logo"/>
+        </div>
 
         <FormControl variant="outlined" className="FormControl-login">
           <InputLabel htmlFor="component-outlined" name="email">
