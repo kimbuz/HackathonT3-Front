@@ -12,16 +12,16 @@ export const Filter = (props) => {
 
   switch (value){
   	 case 0:
-  	 props.funcion('https://whimsical-adjoining-twig.glitch.me/api/v1/content/premieres');
+  	 props.funcion('https://bkultrananoflow.herokuapp.com/api/v1/content/premieres');
      break;
      case 1:
-  	 props.funcion('https://whimsical-adjoining-twig.glitch.me/api/v1/content/movies');
+  	 props.funcion('https://bkultrananoflow.herokuapp.com/api/v1/content/movies');
      break;
      case 2:
-  	 props.funcion('https://whimsical-adjoining-twig.glitch.me/api/v1/content/series');
+  	 props.funcion('https://bkultrananoflow.herokuapp.com/api/v1/content/series');
      break;
      default:
-     props.funcion('https://whimsical-adjoining-twig.glitch.me/api/v1/content')
+     props.funcion('https://bkultrananoflow.herokuapp.com/api/v1/content')
      break;
   }
 

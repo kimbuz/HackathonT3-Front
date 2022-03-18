@@ -8,7 +8,7 @@ import { ItemList } from "../container/ItemList";
 
 export const Home = () => {
   const [coleccion, setColeccion] = useState();
-  const [url, setUrl] = useState('https://whimsical-adjoining-twig.glitch.me/api/v1/content');
+  const [url, setUrl] = useState('https://bkultrananoflow.herokuapp.com/api/v1/content');
   // console.log(coleccion);
   function filter(url){
     setUrl(url);

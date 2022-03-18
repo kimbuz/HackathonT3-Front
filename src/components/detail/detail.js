@@ -43,7 +43,7 @@ export default function ComplexGrid() {
     const getColeccion = async () => {
       try {
         const response = await fetch(
-          "https://whimsical-adjoining-twig.glitch.me/api/v1/content/6233c668433606bc69ff138c"
+          "https://bkultrananoflow.herokuapp.com/api/v1/content/6233c668433606bc69ff138c"
         );
         const data = await response.json();
         setColeccion(data);

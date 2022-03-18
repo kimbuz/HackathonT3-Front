@@ -5,7 +5,7 @@ import { useContext } from "react";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import { Login } from "./components/pages/login";
 import { Home } from "./components/pages/home";
-import { Detail } from "./components/pages/detail";
+import Detail from "./components/pages/detail";
 import { Error } from "./components/pages/error";
 
 import { ThemeProvider } from "@material-ui/core/styles";
